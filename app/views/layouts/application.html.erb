@@ -12,10 +12,9 @@
 
   <body>
 
-    <% flash.each do |name, msg| %> 
-      <%= msg %> 
-    <% end %>
+    <%= render 'shared/flash' %>
 
     <%= yield %>
+    
   </body>
 </html>
