@@ -1,0 +1,28 @@
+<!--
+<% if @user.errors.any? =%>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>  
+<% end %>
+-->
+
+<%= form_with(model: @user, local: true) do |f| %>
+
+    <p>
+      <%= f.label :username%> <br>
+      <%= f.text_field :username, placeholder: "Digite um username"%>
+    </p>
+    <p class="">
+      <%= f.label :email%> <br>
+      <%= f.email_field :email%>
+    </p>
+    <p class="">
+      <%= f.label :password%> <br>
+      <%= f.password_field :password%>
+    </p>
+
+    <p class=""><%= f.submit %></p>
+
+<% end %>
