@@ -1,0 +1,9 @@
+
+<% @users.each do |user| %>
+   <%= link_to user.username, user %> 
+   <%= link_to gravatar_for(user, size: 150), user %> 
+   <%= pluralize(user.articles.count, "article") %> 
+   <%= link_to 'Ver perfil', user %> 
+   <%= link_to 'Editar', edit_user_path(user) %> 
+   <%= time_ago_in_words(user.created_at)%>
+<% end %>
