@@ -1,2 +1,5 @@
 <%= render 'article' %>
 
+<div class="pagination-style">
+  <%= will_paginate @articles, :container => false %>
+</div>

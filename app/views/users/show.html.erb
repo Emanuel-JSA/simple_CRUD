@@ -5,3 +5,7 @@
 <%= link_to  "Edit your profile", edit_user_path(@user) %>
 
 <%= render 'articles/article' %>
+
+<div class="pagination-style">
+  <%= will_paginate @articles, :container => false %>
+</div>
