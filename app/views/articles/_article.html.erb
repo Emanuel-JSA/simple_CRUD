@@ -1,7 +1,7 @@
 <div class="col-12">
   <% @articles.each do |article| %>
     <h1 class="title-font"> <%= article.title %> </h1>
-    <p class="subtitle">by <%= article.user.username %> </p>
+    <p class="subtitle">by <%= link_to article.user.username, user_path(article.user), class: "article-link" %> </p>
     <p> <%= article.description ... %> 
       <%= link_to 'Ler mais', article_path(article), class: "purple-link" %>
     </p>
