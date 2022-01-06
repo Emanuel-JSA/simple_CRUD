@@ -1,16 +1,14 @@
 <%= render 'shared/errors', obj: @article%>
 
 <%= form_with(model: @article, local: true) do |f| %>
+    
+  <%= f.label :title, class: "form-label"%>
+  <%= f.text_field :title, class: "form-control"%>
 
-    <p>
-      <%= f.label :title%> <br>
-      <%= f.text_field :title%>
-    </p>
-    <p class="">
-      <%= f.label :description%> <br>
-      <%= f.text_area :description%>
-    </p>
+  <%= f.label :description, class: "form-label"%> 
+  <%= f.text_area :description, class: "form-control", rows: "10"%>
 
-    <p class=""><%= f.submit %></p>
+  <%= f.submit class: "btn btn-form btn-dark" %>
+  <%= link_to 'Return to articles', root_path, class: "btn btn-form btn-dark" %>
 
 <% end %>
