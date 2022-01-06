@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'articles#index'
 
-  resources :articles
+  resources :articles, except: [:index]
 
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
