@@ -1,5 +1,3 @@
-<%= render 'shared/errors', obj: @user%>
-
 <%= form_with(model: @user, local: true) do |f| %>
 
     <p>
@@ -15,6 +13,6 @@
       <%= f.password_field :password%>
     </p>
 
-    <p class=""><%= f.submit %></p>
+    <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "") %>
 
 <% end %>
