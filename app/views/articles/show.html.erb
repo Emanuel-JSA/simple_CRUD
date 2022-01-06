@@ -1,9 +1,7 @@
-<p><strong>Title:</strong> <%=@article.title%> </p>
+<h1 class="title-font"> <%= @article.title %> </h1>
+<p class="subtitle">by <%= @article.user.username %> </p>
+<p> <%= @article.description %> </p> 
 
-<p><strong>Description:</strong> <%=@article.description%> </p>
-
-<p>by <%= @article.user.username %></p>
-
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %>
-<%= link_to 'Return to articles', root_path %>
+<%= link_to 'Edit', edit_article_path(@article),class: "link-button" %>
+<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "link-button" %>
+<% link_to 'Return to articles', root_path %>

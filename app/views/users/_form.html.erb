@@ -10,9 +10,9 @@
       <%= f.label :password, class: "form-label"%> <br>
       <%= f.password_field :password, class: "form-control"%>
       
-      <div class="d-flex">
+      <div class="d-flex justify-content-between">
         <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-form btn-dark") %>
-        <span class="align-self-center">caso já tenha uma conta clique <%= link_to 'aqui', root_path %></span>
+        <span class="align-self-end span-form">caso já tenha uma conta clique <%= link_to 'aqui', root_path, class: "purple-link" %></span>
       </div>
 
 <% end %>
