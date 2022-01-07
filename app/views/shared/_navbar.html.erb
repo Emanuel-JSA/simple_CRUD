@@ -2,8 +2,13 @@
   <div class="d-flex justify-content-between">
     <%= link_to 'Blog', root_path, class: "navbar-logo" %>
     <div class="buttons d-flex">
-      <% if session[:user_id] %>
-        <%= link_to 'Logout', logout_path, class: "btn btn-signup btn-outline-dark", method: :delete %>
+      <% if logged_in? %>
+        <div class="dropdown">
+          <span class="font-dropdown"><%= link_to current_user.username, user_path(current_user.id), class: "link-no-style"  %></span>
+          <div class="dropdown-content">
+            <%= link_to 'Logout', logout_path, class: "dropdown-link", method: :delete %>
+          </div>
+        </div>
       <% else %>
         <%= link_to 'Login', login_path, class: "btn btn-login" %>
         <%= link_to 'Sign up', signup_path, class: "btn btn-signup btn-outline-dark" %>
