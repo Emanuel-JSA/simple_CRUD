@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user
-      flash[:notice] = "Seja bem vind! #{@user.username}"
+      session[:user_id] = @user.id
+      flash[:notice] = "Seja bem vindo! #{@user.username}"
       redirect_to root_path
     else
       render 'new'
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Sua conta foi alterada"
       redirect_to @user
     else
-      render 'eidt'
+      render 'edit'
     end
   end
 
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) if logged_in?
   end
 
 end

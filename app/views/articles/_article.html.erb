@@ -2,7 +2,7 @@
   <% @articles.each do |article| %>
     <h1 class="title-font"> <%= article.title %> </h1>
     <p class="subtitle">by <%= link_to article.user.username, user_path(article.user), class: "article-link" %> </p>
-    <p> <%= article.description ... %> 
+    <p> <%= truncate(article.description, length: 500 ) %> 
       <%= link_to 'Ler mais', article_path(article), class: "purple-link" %>
     </p>
       <!--
