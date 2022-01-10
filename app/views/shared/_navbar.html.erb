@@ -8,6 +8,7 @@
           <div class="dropdown-content">
             <%= link_to 'Logout', logout_path, class: "dropdown-link", method: :delete %>
             <%= link_to 'Criar um artigo', new_article_path, class: "dropdown-link" %>
+            <%= link_to 'Deletar perfil', user_path(current_user), class: "dropdown-link" , method: :delete, data: { confirm: "Tem certeza?" } %>
           </div>
         </div>
       <% else %>
