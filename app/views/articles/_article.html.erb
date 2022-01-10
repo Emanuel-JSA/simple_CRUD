@@ -1,13 +1,15 @@
 <div class="col-12">
   <% @articles.each do |article| %>
-    <h1 class="title-font"> <%= article.title %> </h1>
+    <h1 class="title-font"> <%= link_to article.title, article_path(article), class: "link-no-style" %> </h1>
     <p class="subtitle">by <%= link_to article.user.username, user_path(article.user), class: "article-link" %> </p>
-    <p> <%= truncate(article.description, length: 500 ) %> 
-      <%= link_to 'Ler mais', article_path(article), class: "purple-link" %>
-    </p>
-      <!--
-    <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure?"} %>
-    <%= link_to 'Edit', edit_article_path(article) %>
-      -->
+    <% if article.description.length > 500  %>
+      <p> <%= truncate(article.description, length: 500 ) %> 
+        <%= link_to 'Ler mais', article_path(article), class: "purple-link" %>
+      </p>
+    <% else %>
+      <p>
+        <%= article.description %>
+      </p>
+    <% end %>
   <% end %>
 </div>

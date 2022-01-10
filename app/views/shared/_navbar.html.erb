@@ -3,14 +3,16 @@
     <%= link_to 'Blog', root_path, class: "navbar-logo" %>
     <div class="buttons d-flex">
       <% if logged_in? %>
-        <div class="dropdown">
-          <span class="font-dropdown"><%= link_to current_user.username, user_path(current_user.id), class: "link-no-style"  %></span>
-          <div class="dropdown-content">
-            <%= link_to 'Logout', logout_path, class: "dropdown-link", method: :delete %>
-            <%= link_to 'Criar um artigo', new_article_path, class: "dropdown-link" %>
-            <%= link_to 'Deletar perfil', user_path(current_user), class: "dropdown-link" , method: :delete, data: { confirm: "Tem certeza?" } %>
-          </div>
-        </div>
+          <a class="nav-link dropdown-toggle font-dropdown link-no-style" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= "(admin)" if current_user.admin? %>
+            <%= current_user.username %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><%= link_to "Ver perfil", user_path(current_user.id), class: "dropdown-link" %></li>
+            <li><%= link_to 'Logout', logout_path, class: "dropdown-link", method: :delete %></li>
+            <li><%= link_to 'Criar um artigo', new_article_path, class: "dropdown-link" %></li>
+            <li><%= link_to 'Deletar perfil', user_path(current_user), class: "dropdown-link" , method: :delete, data: { confirm: "Tem certeza?" } %></li>
+          </ul>
       <% else %>
         <%= link_to 'Login', login_path, class: "btn btn-login" %>
         <%= link_to 'Sign up', signup_path, class: "btn btn-signup btn-outline-dark" %>

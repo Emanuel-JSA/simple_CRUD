@@ -2,11 +2,12 @@
   <div class="col-4 user-card text-center">
       <h1 class="user-card-title"> <%= @user.username %></h1>
       <%= gravatar_for @user, size: 200 %>
-      <% if logged_in? && @user == current_user %>
+      <% if logged_in? && (@user == current_user || current_user.admin?) %>
         <div class="user-card-btn d-flex mx-auto">
           <%= link_to  "Editar seu perfil", edit_user_path(@user), class: "btn btn-edit-user btn-outline-dark" %>
-          <%= link_to 'Criar um artigo', new_article_path, class: "btn btn-create-article btn-outline-dark" %>
-        </div>
+      <% end %>
+      <% if logged_in? && @user == current_user %>
+          <%= link_to 'Criar um artigo', new_article_path, class: "btn btn-create-article btn-outline-dark"  %>
       <% end %>
   </div>  
 </div>
