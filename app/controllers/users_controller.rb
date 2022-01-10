@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index]
+  before_action :require_user, only: [:edit, :update]
+  before_action :require_same_user, only:[:edit, :update]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 6)
@@ -44,6 +46,13 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id]) if logged_in?
+  end
+
+  def require_same_user
+    if current_user != set_user
+      flash[:alert] = "Você só pode editar ou deletar seu usuário"
+      redirect_to @user
+    end
   end
 
 end
