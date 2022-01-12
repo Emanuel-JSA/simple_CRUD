@@ -6,6 +6,10 @@
   <% end %>
 </div>
 
+<% if logged_in? && current_user.admin? %>
+  <%= link_to 'Criar categoria', new_category_path, class: "link-button" %>
+<% end %>
+
 <div class="pagination-style">
   <%= will_paginate @categories, :container => false %>
 </div>
