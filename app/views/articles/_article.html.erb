@@ -2,6 +2,9 @@
   <% @articles.each do |article| %>
     <h1 class="title-font"> <%= link_to article.title, article_path(article), class: "link-no-style" %> </h1>
     <p class="subtitle">by <%= link_to article.user.username, user_path(article.user), class: "article-link" %> </p>
+    <% if article.categories.any? %>
+      <p class="categories-link"><%= render article.categories %></p>
+    <% end %>
     <% if article.description.length > 500  %>
       <p> <%= truncate(article.description, length: 500 ) %> 
         <%= link_to 'Ler mais', article_path(article), class: "purple-link" %>

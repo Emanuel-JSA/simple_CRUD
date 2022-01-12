@@ -1,5 +1,10 @@
 <h1 class="title-font"> <%= @article.title %> </h1>
-<p class="subtitle">por <%=link_to @article.user.username, user_path(@article.user), class: "link-no-style" %> </p>
+<p class="subtitle">
+  por <%=link_to @article.user.username, user_path(@article.user), class: "link-no-style" %> 
+</p>
+<% if @article.categories.any? %>
+  <p class="categories-link"><%= render @article.categories %></p>
+<% end %>
 <p> <%= @article.description %> </p> 
 
 <% if logged_in? && (current_user == @article.user || current_user.admin?)%>
